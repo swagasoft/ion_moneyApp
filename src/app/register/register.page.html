@@ -5,5 +5,47 @@
 </ion-header>
 
 <ion-content>
+  <ion-row>
+    <ion-col size-md="6" offset-md="3">
+            <ion-card>
+        
+                    <ion-card-content>
+                      <section *ngIf="(authservice.user | async) as user; else loginItems">
+                        <ion-card>
+                          <ion-card-header>
+                            <ion-card-title>{{user.email}} </ion-card-title>
+                          </ion-card-header>
+                        </ion-card>
+
+                      </section>
+                            <ng-template #loginItems>
+                            <h1>You need to log in!</h1>
+                            </ng-template>
+                            <ion-item>
+                                    <ion-label position="floating">Email</ion-label>
+                                    <ion-input [(ngModel)]="user.email" type="email" id="user_email"></ion-input>
+                                </ion-item>
+                            <ion-item>
+                                    <ion-label position="floating">Password</ion-label>
+                                    <ion-input [(ngModel)]="user.password" type="email" id="user_email"></ion-input>
+                                </ion-item>
+                                
+                                <section>
+                                <ion-button (click)="login()" color="secondary" fill="outline"  id="login"> login </ion-button>
+                                <ion-button (click)="logout()" color="secondary" fill="outline"  id="login"> logout </ion-button>
+                                <ion-button (click)="createAccount()" color="secondary" fill="outline"  id="login"> register</ion-button>
+                              </section>   
+                    </ion-card-content>
+                </ion-card>
+    </ion-col>
+</ion-row>
+
+
+
+<!-- test page  -->
+
+
+
+ 
 
 </ion-content>
